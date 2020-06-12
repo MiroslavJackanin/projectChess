@@ -16,28 +16,32 @@ public class Chess {
             pos.setCharAt(1, pos.charAt(0));
             pos.setCharAt(0, temp);
         }
-        System.out.println(pos);
         return pos.toString();
     }
 
     public boolean checkBishop(String pos, String dest){
-        pos = normalize(pos);
-        dest = normalize(dest);
-        if(pos == null || dest == null)
+        pos=normalize(pos);
+        dest=normalize(dest);
+        if (pos==null|| dest==null){
             return false;
-
-        return ((int) pos.charAt(0) - (int) dest.charAt(0)) == (Integer.parseInt(String.valueOf(pos.charAt(1))) - Integer.parseInt(String.valueOf(dest.charAt(1))));
+        }
+        if (pos.equals(dest)){
+            return false;
+        }
+        if (Math.abs(pos.charAt(0)-dest.charAt(0))==Math.abs(pos.charAt(1) -dest.charAt(1))){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean checkKing(String pos, String dest){
         pos=normalize(pos);
         dest=normalize(dest);
         if (pos==null|| dest==null){
-            System.out.println("1");
             return false;
         }
         if (pos.equals(dest)){
-            System.out.println("2");
             return false;
         }
         return Math.abs(pos.charAt(0) - dest.charAt(0)) <= Math.abs(1) && Math.abs(pos.charAt(1) - dest.charAt(1)) <= Math.abs(1);
@@ -47,11 +51,9 @@ public class Chess {
         pos=normalize(pos);
         dest=normalize(dest);
         if (pos==null|| dest==null){
-            System.out.println("1");
             return false;
         }
         if (pos.equals(dest)){
-            System.out.println("2");
             return false;
         }
         return Math.abs(pos.charAt(0) - dest.charAt(0)) == Math.abs(pos.charAt(1) - dest.charAt(1))
@@ -62,11 +64,9 @@ public class Chess {
         pos=normalize(pos);
         dest=normalize(dest);
         if (pos==null|| dest==null){
-            System.out.println("1");
             return false;
         }
         if (pos.equals(dest)){
-            System.out.println("2");
             return false;
         }
         return pos.charAt(0) == dest.charAt(0) || pos.charAt(1) == dest.charAt(1);
@@ -76,11 +76,9 @@ public class Chess {
         pos=normalize(pos);
         dest=normalize(dest);
         if (pos==null|| dest==null){
-            System.out.println("1");
             return false;
         }
         if (pos.equals(dest)){
-            System.out.println("2");
             return false;
         }
         int i = Math.abs(pos.charAt(0) - dest.charAt(0));
